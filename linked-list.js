@@ -69,15 +69,35 @@ class LinkedList {
   }
 
   /**
-   * Traverses the list and calls a callback for each node.
-   * @param {(node: Node, index: number) => void} callback
+   * Returns the number of nodes in the list.
+   * @returns {number} The size of the list.
+   */
+  size() {
+    let count = 0;
+
+    this.#traverse(() => {
+      count++;
+    });
+
+    return count;
+  }
+
+  /**
+   * Traverses the list, calling the callback for each node.
+   * Stops early if the callback returns a non-undefined value.
+   * @param {function(Node, number): any} callback - Function called with node and index.
+   * @returns {any|undefined} The value returned by callback to stop traversal, or undefined.
    */
   #traverse(callback) {
+    if (this.#head === null) {
+      return undefined;
+    }
+
     let current = this.#head;
     let index = 0;
-
     while (current) {
-      callback(current, index);
+      const result = callback(current, index);
+      if (result !== undefined) return result;
       current = current.nextNode;
       index++;
     }
