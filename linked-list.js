@@ -96,6 +96,17 @@ class LinkedList {
   }
 
   /**
+   * Finds the index of the first node containing the given value.
+   * @param {*} - value - The value to search for.
+   * @returns {number} the index if the value is found, null otherwise.
+   */
+  find(value) {
+    return this.#traverse((node, index) => {
+      if (node.value === value) return index;
+    });
+  }
+
+  /**
    * Returns a string representation of a linked list.
    * Format: ( value1 ) -> ( value2 ) -> ... -> null
    * @returns {string} A human-readable string that visualizes a linked list.
