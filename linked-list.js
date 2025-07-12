@@ -129,6 +129,7 @@ class LinkedList {
    * Inserts a new node with the provided value at the given index.
    * @param {*} value - The value to add.
    * @param {number} index - The index to insert the value at.
+   * @throws {Error} Throws an error if the index is out of bounds.
    */
   insertAt(value, index) {
     if (index === 0) {
