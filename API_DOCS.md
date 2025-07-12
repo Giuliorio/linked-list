@@ -17,11 +17,11 @@ Represents a single node in a node list.
 **Kind**: global class  
 <a name="new_Node_new"></a>
 
-### new Node(value)
+### new Node([value])
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| value | <code>\*</code> | <code></code> | value The value stored in the node. |
+| [value] | <code>\*</code> | <code></code> | The value stored in the node. |
 
 <a name="LinkedList"></a>
 
