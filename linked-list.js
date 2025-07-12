@@ -33,4 +33,19 @@ class LinkedList {
   get tail() {
     return null;
   }
+
+  /**
+   * Traverses the list and calls a callback for each node.
+   * @param {(node: Node, index: number) => void} callback
+   */
+  #traverse(callback) {
+    let current = this.#head;
+    let index = 0;
+
+    while (current) {
+      callback(current, index);
+      current = current.nextNode;
+      index++;
+    }
+  }
 }
