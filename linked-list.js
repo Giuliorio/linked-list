@@ -83,6 +83,25 @@ class LinkedList {
   }
 
   /**
+   * Returns a string representation of a linked list.
+   * Format: ( value1 ) -> ( value2 ) -> ... -> null
+   * @returns {string} A human-readable string that visualizes a linked list.
+   */
+  toString() {
+    let string = '';
+
+    this.#traverse((node) => {
+      string = string.concat('( ', node.value, ' ) -> ');
+
+      if (node.nextNode === null) {
+        string = string.concat('null');
+      }
+    });
+
+    return string;
+  }
+
+  /**
    * Traverses the list, calling the callback for each node.
    * Stops early if the callback returns a non-undefined value.
    * @param {function(Node, number): any} callback - Function called with node and index.
