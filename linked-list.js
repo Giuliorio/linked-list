@@ -31,7 +31,13 @@ class LinkedList {
    * @returns {Node|null} The tail or null if the list is empty.
    */
   get tail() {
-    return null;
+    let last = null;
+
+    this.#traverse((node) => {
+      last = node;
+    });
+
+    return last;
   }
 
   /**
