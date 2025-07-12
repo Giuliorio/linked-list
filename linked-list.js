@@ -126,6 +126,33 @@ class LinkedList {
   }
 
   /**
+   * Inserts a new node with the provided value at the given index.
+   * @param {*} value - The value to add.
+   * @param {number} index - The index to insert the value at.
+   */
+  insertAt(value, index) {
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+
+    if (index < 0 || index > this.size()) {
+      throw new Error('Index out of Bounds');
+    }
+
+    const node = new Node(value);
+
+    let previousNode = null;
+    const currentNodeAtIndex = this.#traverse((current, currentIndex) => {
+      if (index - 1 === currentIndex) previousNode = current;
+      if (index === currentIndex) return current;
+    });
+
+    node.nextNode = currentNodeAtIndex || null;
+    previousNode.nextNode = node;
+  }
+
+  /**
    * Traverses the list, calling the callback for each node.
    * Stops early if the callback returns a non-undefined value.
    * @param {function(Node, number): any} callback - Function called with node and index.
