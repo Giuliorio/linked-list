@@ -153,6 +153,32 @@ class LinkedList {
   }
 
   /**
+   * Removes the node at the given index.
+   *
+   * @param {number} index - The index of the node to remove.
+   * @throws {Error} Throws an error if the index is out of bounds.
+   */
+  removeAt(index) {
+    if (index < 0 || index > this.size()) {
+      throw new Error('Index out of Bounds');
+    }
+
+    if (index === 0) {
+      const currentHead = this.#head;
+      this.#head = currentHead.nextNode;
+      return;
+    }
+
+    let previousNode = null;
+    const nextNode = this.#traverse((current, currentIndex) => {
+      if (index - 1 === currentIndex) previousNode = current;
+      if (index + 1 === currentIndex) return current;
+    });
+
+    previousNode.nextNode = nextNode;
+  }
+
+  /**
    * Traverses the list, calling the callback for each node.
    * Stops early if the callback returns a non-undefined value.
    * @param {function(Node, number): any} callback - Function called with node and index.
