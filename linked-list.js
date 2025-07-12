@@ -83,6 +83,19 @@ class LinkedList {
   }
 
   /**
+   * Checks whether a value exists in the list.
+   * @param {*} - value - The value to search for.
+   * @returns {boolean} True if the value is found, false otherwise.
+   */
+  contains(value) {
+    return (
+      this.#traverse((node) => {
+        if (node.value === value) return true;
+      }) === true
+    );
+  }
+
+  /**
    * Returns a string representation of a linked list.
    * Format: ( value1 ) -> ( value2 ) -> ... -> null
    * @returns {string} A human-readable string that visualizes a linked list.
