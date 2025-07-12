@@ -4,7 +4,7 @@
  */
 class Node {
   /**
-   * @param {*} - value The value stored in the node.
+   * @param {*} [value=null] -  The value stored in the node.
    */
   constructor(value = null) {
     this.value = value;
